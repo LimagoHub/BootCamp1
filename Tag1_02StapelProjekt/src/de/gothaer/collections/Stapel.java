@@ -7,8 +7,12 @@ package de.gothaer.collections;
  */
 public class Stapel {
 	
+	private int [] data;
+	private int index;
+	
 	public Stapel() {
-		
+		data = new int[10];
+		index = 0;
 	}
 
 	/**
@@ -16,7 +20,9 @@ public class Stapel {
 	 * @param wert Der teller der in den Speicher fällt
 	 */
 	public void push(int wert) {
-		
+		if(isFull())
+			return ;
+		data[index++] = wert;
 	}
 	
 	/**
@@ -24,18 +30,15 @@ public class Stapel {
 	 * @return der oberste Teller
 	 */
 	public int pop() {
-		/*
-		 * Mehrzeilig
-		 */
-		
-		// Kommentar bis Zeilenende
-		return 0;
+		if(isEmpty())
+			return 0;
+		return data[--index];
 	}
 	
 	public boolean isEmpty() {
-		return true;
+		return index <= 0;
 	}
 	public boolean isFull() {
-		return true;
+		return index >= data.length;
 	}
 }
