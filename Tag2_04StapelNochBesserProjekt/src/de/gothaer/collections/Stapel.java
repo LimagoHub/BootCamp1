@@ -23,10 +23,11 @@ public class Stapel<T> {
 	/**
 	 * Bla, bla...
 	 * @param wert Der teller der in den Speicher fällt
+	 * @throws StapelException 
 	 */
-	public void push(T wert) {
+	public void push(T wert) throws StapelException {
 		if(isFull())
-			return ;
+			throw new StapelException("Overflow") ;
 		data[index++] = wert;
 	}
 	
