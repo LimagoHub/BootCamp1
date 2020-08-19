@@ -4,7 +4,7 @@ public class CalculatorSecure implements Calculator{
 	
 	private final Calculator calculator;
 
-	public CalculatorSecure(Calculator calculator) {
+	protected CalculatorSecure(Calculator calculator) {
 		this.calculator = calculator;
 	}
 
