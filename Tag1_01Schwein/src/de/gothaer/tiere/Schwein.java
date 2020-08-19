@@ -69,8 +69,16 @@ public class Schwein {
 
 	@Override
 	public String toString() {
-		return "Schwein [name=" + name + ", gewicht=" + gewicht + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Schwein [name=");
+		builder.append(name);
+		builder.append(", gewicht=");
+		builder.append(gewicht);
+		builder.append("]");
+		return builder.toString();
 	}
+
+	
 	
 	
 
