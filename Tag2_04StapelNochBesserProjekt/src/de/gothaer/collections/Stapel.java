@@ -11,13 +11,17 @@ public class Stapel<T> {
 	private T [] data;
 	private int index;
 	
-	public Stapel() {
+	public Stapel() throws StapelException {
 		this(DEFAULT_SIZE);
 	}
 
-	public Stapel(int groesse) {
-		data = (T[]) new Object[groesse < 1 ? DEFAULT_SIZE : groesse];
-		index = 0;
+	public Stapel(int groesse) throws StapelException {
+		try {
+			data = (T[]) new Object[groesse];
+			index = 0;
+		} catch (RuntimeException e) {
+			throw new StapelException("Init", e);
+		}
 	}
 
 	/**
@@ -26,18 +30,22 @@ public class Stapel<T> {
 	 * @throws StapelException 
 	 */
 	public void push(T wert) throws StapelException {
-		if(isFull())
-			throw new StapelException("Overflow") ;
-		data[index++] = wert;
+		
+		try {
+			data[index++] = wert;
+		} catch (RuntimeException e) {
+			throw new StapelException("Overflow",e);
+		}
 	}
 	
 	/**
 	 * Bla, bla....
 	 * @return der oberste Teller
+	 * @throws StapelException 
 	 */
-	public T pop() {
+	public T pop() throws StapelException {
 		if(isEmpty())
-			return null;
+			throw new StapelException("Underflow");
 		return data[--index];
 	}
 	
