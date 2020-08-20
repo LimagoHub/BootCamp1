@@ -3,9 +3,13 @@ package de.gothaer.tiere;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.events.PropertyChangedEvent;
+import de.events.PropertyChangedListener;
+
 public class Schwein {
 	
 	private List<PigTooFatListener> pigTooFatListeners = new ArrayList<>();
+	private List<PropertyChangedListener> propertyChangedListeners = new ArrayList<PropertyChangedListener>(); 
 	
 	// Instanzvariablen
 	private String name;
@@ -46,6 +50,13 @@ public class Schwein {
 		pigTooFatListeners.remove(listener);
 	}
 	
+	public void addPropertyChangedListener(PropertyChangedListener propertyChangedListener) {
+		propertyChangedListeners.add(propertyChangedListener);
+	}
+	public void removePropertyChangedListener(PropertyChangedListener propertyChangedListener) {
+		propertyChangedListeners.remove(propertyChangedListener);
+	}
+	
 	
 	
 	
@@ -60,8 +71,7 @@ public class Schwein {
 	}
 
 	public void setName(String name) {
-		
-		this.name = name;
+		firePropertyChanged("name", this.name, this.name = name);
 	}
 
 
@@ -74,7 +84,7 @@ public class Schwein {
 			return ;
 		if(gewicht > 20)
 			firePigTooFatEvent();
-		this.gewicht = gewicht;
+		firePropertyChanged("gewicht", this.gewicht, this.gewicht = gewicht);
 	}
 
 	// Instanzmethoden
@@ -101,6 +111,12 @@ public class Schwein {
 			listener.pigTooFat(this);
 		}
 	}
-	
+	private void firePropertyChanged(String propertyname, Object oldValue, Object newValue) {
+		firePropertyChanged(new PropertyChangedEvent(this, propertyname, oldValue, newValue));
+	}
+	private void firePropertyChanged(PropertyChangedEvent event) {
+		for(PropertyChangedListener listener: propertyChangedListeners)
+			listener.propertyChanged(event);
+	}
 
 }
