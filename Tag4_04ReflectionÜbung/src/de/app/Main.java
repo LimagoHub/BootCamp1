@@ -1,9 +1,6 @@
 package de.app;
 
-import java.lang.reflect.Method;
-
 import de.factory.BeanCreator;
-import de.gothaer.tiere.Schwein;
 
 public class Main {
 
