@@ -3,7 +3,7 @@ package de.mitarbeiter.visitors;
 import de.mitarbeiter.GehaltsEmpfänger;
 import de.mitarbeiter.LohnEmpfänger;
 
-public class PrintVisitor implements MitarbeiterVisitor {
+public class PrintVisitor extends AbstractMitarbeiterVisistor {
 
 	@Override
 	public void visit(GehaltsEmpfänger gehaltsEmpfänger) {

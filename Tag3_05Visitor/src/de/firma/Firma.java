@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.mitarbeiter.AbstractMitarbeiter;
+import de.mitarbeiter.GehaltsEmpfänger;
+import de.mitarbeiter.LohnEmpfänger;
 import de.mitarbeiter.visitors.MitarbeiterVisitor;
 
 public class Firma {
@@ -25,10 +27,11 @@ public class Firma {
 		}
 	}
 	public void iterate(MitarbeiterVisitor visitor) {
+		visitor.init();
 		for (AbstractMitarbeiter mitarbeiter : mitarbeiters) {
-			//visitor.visit(mitarbeiter);
 			mitarbeiter.accept(visitor);
 		}
+		visitor.dispose();
 	}
 	
 }

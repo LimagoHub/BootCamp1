@@ -4,6 +4,7 @@ import de.firma.Firma;
 import de.mitarbeiter.GehaltsEmpfänger;
 import de.mitarbeiter.LohnEmpfänger;
 import de.mitarbeiter.visitors.PrintVisitor;
+import de.mitarbeiter.visitors.StatistikVisitor;
 
 public class Main {
 
@@ -17,6 +18,8 @@ public class Main {
 		
 		//firma.print();
 		firma.iterate(new PrintVisitor());
+		// Reset
+		firma.iterate(new StatistikVisitor());
 	}
 
 }
