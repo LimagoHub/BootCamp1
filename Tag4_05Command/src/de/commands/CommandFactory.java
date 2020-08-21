@@ -1,26 +1,21 @@
 package de.commands;
 
 public class CommandFactory { 
-	
+	private static final String PREFIX ="de.commands.";
+	private static final String SUFFIX ="Command";
 	public static Command createCommand(String zeile) {
-		Command retval = null;
-		String [] tokens = zeile.split(" ");
 		
-		switch (tokens[0]) {
-		case "Add":
-			retval = new AddCommand();
+		try {
+			String [] tokens = zeile.split(" ");
+			
+			Command retval = (Command) Class.forName(PREFIX + tokens[0] + SUFFIX).newInstance() ;
 			retval.parse(tokens);
-			break;
-		case "Print":
-			retval = new PrintCommand();
-			retval.parse(tokens);
-			break;
-
-		default:
-			break;
-		}
-		
-		return retval;
+			
+			return retval;
+		}  catch (Throwable e) {
+			System.out.println(e.getMessage());
+			return null;
+		} 
 	}
 
 }
