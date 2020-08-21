@@ -1,6 +1,6 @@
 package de.template;
 
-public class CharacterCounter extends AbstractFileProcessor {
+public class CharacterCounter extends AbstractCharacterListener {
 	
 	private int counter;
 	
