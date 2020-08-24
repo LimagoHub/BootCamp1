@@ -32,13 +32,13 @@ public class Main {
 		System.out.println(piggy);
 		
 		
-//		FileOutputStream fileOutputStream = new FileOutputStream("piggy.schwein");
-//		
-//		ObjectOutputStream out = new ObjectOutputStream(fileOutputStream);
-//		
-//		out.writeObject(piggy);
-//		
-//		out.close();
+		FileOutputStream fileOutputStream = new FileOutputStream("piggy.schwein");
+		
+		ObjectOutputStream out = new ObjectOutputStream(fileOutputStream);
+		
+		out.writeObject(piggy);
+		
+		out.close();
 		
 		FileInputStream fis = new FileInputStream("piggy.schwein");
 		ObjectInputStream in = new ObjectInputStream(fis);

@@ -1,8 +1,13 @@
 package de.gothaer.tiere;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
 
 public class Schwein implements Serializable{
 	
@@ -11,7 +16,7 @@ public class Schwein implements Serializable{
 	// Instanzvariablen
 	private String name;
 	private int gewicht;
-
+	private List<String> strings = Arrays.asList("a","b","c");
 		
 
 	// Klassenvariable
@@ -99,6 +104,28 @@ public class Schwein implements Serializable{
 	    }
 	  }
 	
+	 
+	public Schwein clone() {
+		try {
+			ByteArrayOutputStream out = new ByteArrayOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(out);
+			oos.writeObject(this);
+			oos.close();
+			ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
+			ObjectInputStream  ois = new ObjectInputStream(in);
+			Schwein retval = (Schwein) ois.readObject();
+			ois.close();
+			return retval;
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	 
+	 
 	public SchweineMemento getMemento() {
 		return new MySchweineMemento(name, gewicht);
 	}
