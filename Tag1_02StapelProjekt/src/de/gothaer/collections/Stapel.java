@@ -1,5 +1,8 @@
 package de.gothaer.collections;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Formalen Kommentare (fachliche Beschreibung
  * @author JoachimWagner
@@ -7,17 +10,17 @@ package de.gothaer.collections;
  */
 public class Stapel {
 	private static final int DEFAULT_SIZE = 10;
-	private int [] data;
-	private int index;
+	private List<Integer> data;
+	
 	
 	public Stapel() {
-		this(DEFAULT_SIZE);
+		data = new ArrayList<Integer>();
 	}
 
-	public Stapel(int groesse) {
-		data = new int[groesse < 1 ? DEFAULT_SIZE : groesse];
-		index = 0;
-	}
+//	public Stapel(int groesse) {
+//		data = new int[groesse < 1 ? DEFAULT_SIZE : groesse];
+//		index = 0;
+//	}
 
 	/**
 	 * Bla, bla...
@@ -26,7 +29,7 @@ public class Stapel {
 	public void push(int wert) throws StapelException{
 		if(isFull())
 			throw new StapelException("Overflow") ;
-		data[index++] = wert;
+		data.add(wert);
 	}
 	
 	/**
@@ -36,13 +39,13 @@ public class Stapel {
 	public int pop() {
 		if(isEmpty())
 			return 0;
-		return data[--index];
+		return data.remove(data.size() - 1);
 	}
 	
 	public boolean isEmpty() {
-		return index <= 0;
+		return data.isEmpty();
 	}
 	public boolean isFull() {
-		return index >= data.length;
+		return false;
 	}
 }
