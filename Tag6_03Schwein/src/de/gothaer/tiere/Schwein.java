@@ -56,8 +56,6 @@ public class Schwein {
 	}
 
 	private void setGewicht(int gewicht) {
-		if(gewicht < 10)
-			return ;
 		this.gewicht = gewicht;
 	}
 
