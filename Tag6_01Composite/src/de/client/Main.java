@@ -37,6 +37,7 @@ public class Main {
 		e1_1.appendChild(e2_2_3);
 
 		travers(root);
+		
 	}
 	
 	public static void travers(AbstractNode node) {
