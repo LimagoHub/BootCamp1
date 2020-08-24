@@ -3,6 +3,7 @@ package de.client;
 import de.composite.AbstractKontoNode;
 import de.composite.Konto;
 import de.composite.KontoGruppe;
+import de.composite.visitors.PrintVisitor;
 
 public class Main {
 
@@ -36,7 +37,7 @@ public class Main {
 		Konto e2_2_3 = new Konto("e2_2_3");
 		e1_1.appendChild(e2_2_3);
 
-		root.print();
+		e1_1.iterate(new PrintVisitor());
 		
 	}
 	

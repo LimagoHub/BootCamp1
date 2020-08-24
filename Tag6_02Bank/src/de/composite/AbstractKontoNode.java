@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import de.composite.visitors.KontenVisitor;
+
 public abstract class AbstractKontoNode {
 	
 	private AbstractKontoNode parent = null;
@@ -73,5 +75,14 @@ public abstract class AbstractKontoNode {
 			child.iteratorImpl(liste);
 		}
 	}
+	
+	public void iterate(KontenVisitor visitor) {
+		Iterator<AbstractKontoNode> it = iterator();
+		while(it.hasNext())
+			it.next().accept(visitor);
+
+	}
+	
+	public abstract void accept(KontenVisitor visitor) ;
 
 }

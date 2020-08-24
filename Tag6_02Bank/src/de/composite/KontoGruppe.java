@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import de.composite.visitors.KontenVisitor;
+
 public class KontoGruppe extends AbstractKontoNode {
 	
 	private List<AbstractKontoNode> children = new ArrayList<>();
@@ -36,6 +38,12 @@ public class KontoGruppe extends AbstractKontoNode {
 		builder.append(getLabel());
 		builder.append("]");
 		return builder.toString();
+	}
+
+	@Override
+	public void accept(KontenVisitor visitor) {
+		visitor.visit(this);
+		
 	}
 
 	
