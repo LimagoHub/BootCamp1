@@ -1,10 +1,11 @@
 package de.gothaer.app;
 
 import de.gothaer.collections.Stapel;
+import de.gothaer.collections.StapelException;
 
 public class StapelTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws StapelException{
 
 		Stapel myStapel = new Stapel();
 		

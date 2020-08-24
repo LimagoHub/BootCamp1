@@ -23,9 +23,9 @@ public class Stapel {
 	 * Bla, bla...
 	 * @param wert Der teller der in den Speicher fällt
 	 */
-	public void push(int wert) {
+	public void push(int wert) throws StapelException{
 		if(isFull())
-			return ;
+			throw new StapelException("Overflow") ;
 		data[index++] = wert;
 	}
 	
