@@ -15,7 +15,7 @@ public class CalcClient {
 
 
 	public void run() {
-			
+		
 		System.out.println(calculator.add(3, 7));
 
 	}
