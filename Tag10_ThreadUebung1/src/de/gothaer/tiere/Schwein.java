@@ -45,14 +45,21 @@ public class Schwein {
 
 	// Instanzmethoden
 	public void fressen() {
+		new Thread() {
+			public void run() {
+				fressenImpl();
+			};
+		}.start();
 		
+	}
+
+	private void fressenImpl() {
 		try {
 			Thread.sleep(2000);
 			gewicht ++;
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	@Override
